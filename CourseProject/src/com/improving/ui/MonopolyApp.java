@@ -3,6 +3,7 @@ package com.improving.ui;
 import java.util.List;
 
 import com.improving.monopoly.Game;
+import com.improving.monopoly.IPlayer;
 import com.improving.monopoly.Player;
 
 public class MonopolyApp {
@@ -11,13 +12,15 @@ public class MonopolyApp {
 		Game game = new Game(2);
 		List<Player> players = game.getPlayers();
 		
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i < 45; i++) {
 			game.playRound();
-			for (Player player : players) {
+			for (IPlayer player : players) {
+				System.out.println("Round "+i);
 				System.out.println(player.getToken() + " rolled a "
 						+ player.getLastRoll());
 				System.out.println(player.getToken() + " landed on "
 						+ player.getLocation().getName());
+				System.out.println(player.getToken() + " has $"+player.getMoney());
 			}
 		}
 	}

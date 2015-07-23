@@ -42,10 +42,19 @@ public class Game{
 	private void buildSquares() {
 		squares = new ArrayList<>();
 		for(int i=0; i< 40; i++){
-			if(i==0){
-				squares.add(new Square("GO"));
-			}else{
+			switch (i) {
+			case 0:
+				squares.add(new GoSquare());
+				break;
+			case 38:
+				squares.add(new LuxuryTaxSquare());
+				break;
+			case 4:
+				squares.add(new IncomeTaxSquare());
+				break;
+			default:
 				squares.add(new Square("Square "+i));
+				break;
 			}
 		}
 	}

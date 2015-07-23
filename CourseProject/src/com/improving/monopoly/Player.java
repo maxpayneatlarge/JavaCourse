@@ -2,7 +2,7 @@ package com.improving.monopoly;
 
 import com.improving.dice.Die;
 
-public class Player {
+public class Player implements IPlayer {
 	private Token token;
 	private Square location;
 	private int money;
@@ -14,18 +14,34 @@ public class Player {
 		this.location = square;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.improving.monopoly.IPlayer#getToken()
+	 */
+	@Override
 	public Token getToken() {
 		return this.token;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.improving.monopoly.IPlayer#getMoney()
+	 */
+	@Override
 	public int getMoney() {
 		return money;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.improving.monopoly.IPlayer#getLocation()
+	 */
+	@Override
 	public Square getLocation() {
 		return location;
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.improving.monopoly.IPlayer#getLastRoll()
+	 */
+	@Override
 	public int getLastRoll() {
 		return lastRoll;
 	}
@@ -38,8 +54,18 @@ public class Player {
 		
 		for (int i = 0; i < lastRoll; i++) {
 			location = location.getNextSquare();
+			location.passOverBy(this);
 		}
 		
+		location.landOnBy(this);
+	}
+	
+	public void credit(int amount){
+		this.money += amount;
+	}
+
+	public void debit(int amount) {
+		this.money -= amount;
 	}
 
 }

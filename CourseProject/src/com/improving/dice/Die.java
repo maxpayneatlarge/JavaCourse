@@ -1,6 +1,6 @@
 package com.improving.dice;
 
-public class Die {
+public class Die implements Comparable<Die>{
 	
 	private int faceValue;
 	private int numberOfSides;
@@ -25,5 +25,10 @@ public class Die {
 	
 	public int getFaceValue(){
 		return this.faceValue;
+	}
+
+	@Override
+	public int compareTo(Die otherDie) {
+		return this.getFaceValue() - otherDie.getFaceValue();
 	}
 }

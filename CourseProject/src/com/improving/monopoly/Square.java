@@ -19,4 +19,15 @@ public class Square {
 	public void setNextSquare(Square nextSquare){
 		this.nextSquare = nextSquare;
 	}
+
+	public void landOnBy(Player player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void passOverBy(Player player) {
+		
+	}
+	
+	
 }

@@ -1,5 +1,9 @@
 package com.improving.ui;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import com.improving.dice.Die;
 
 public class DiceApp {
@@ -15,8 +19,22 @@ public class DiceApp {
 		Die die3 = new Die(20);
 		die3.roll();
 		
-		System.out.println("Result of Die roll: "+d.getFaceValue());
-		System.out.println("Result of Die 2 roll: "+die2.getFaceValue());
-		System.out.println("Result of 20 sided die roll: "+die3.getFaceValue());
+		int value1 = d.getFaceValue();
+		int value2 = die2.getFaceValue();
+		int value3 = die3.getFaceValue();
+		System.out.println("Value1 = "+value1);
+		System.out.println("Value2 = "+value2);
+		System.out.println("Value3 = "+value3);
+		
+		List<Die> dice = new ArrayList<>();
+		dice.add(die3);
+		dice.add(d);
+		dice.add(die2);
+		
+		Collections.sort(dice);
+		
+		for (Die die : dice) {
+			System.out.println(die.getFaceValue());
+		}
 	}
 }
